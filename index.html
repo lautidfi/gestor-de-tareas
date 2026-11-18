@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f7fb">
+    <title>Mis tareas</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <a class="brand" href="#" aria-label="Taskia, inicio">
+          <span class="brand-mark" aria-hidden="true">✓</span>
+          <span>taskia</span>
+        </a>
+        <span class="today" id="today"></span>
+      </header>
+
+      <section class="welcome" aria-labelledby="welcome-title">
+        <div class="welcome-copy">
+          <p class="eyebrow"><span class="sparkle" aria-hidden="true">✦</span> TU ESPACIO, A TU RITMO</p>
+          <h1 id="welcome-title">Un paso a la vez,<br><span>todo se puede.</span></h1>
+          <p class="welcome-description">Organizá tus pendientes y celebrá cada cosa que terminás.</p>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="sun"></div>
+          <div class="art-card art-card-back"></div>
+          <div class="art-card art-card-front">
+            <span class="art-check">✓</span>
+            <span class="art-line art-line-long"></span>
+            <span class="art-line"></span>
+          </div>
+          <span class="art-star">✳</span>
+        </div>
+      </section>
+
+      <section class="tasks-panel" aria-labelledby="tasks-title">
+        <div class="tasks-heading">
+          <div>
+            <p class="eyebrow">TU LISTA</p>
+            <h2 id="tasks-title">Tareas para hoy</h2>
+          </div>
+          <span class="task-count" id="task-count" aria-live="polite"></span>
+        </div>
+
+        <form class="add-form" id="add-form">
+          <label class="sr-only" for="task-input">Nueva tarea</label>
+          <span class="input-plus" aria-hidden="true">+</span>
+          <input id="task-input" name="task" type="text" placeholder="¿Qué tenés en mente?" autocomplete="off" maxlength="120" required>
+          <button type="submit">Agregar tarea <span aria-hidden="true">→</span></button>
+        </form>
+
+        <ul class="task-list" id="task-list" aria-label="Lista de tareas"></ul>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <span aria-hidden="true">☀</span>
+          <p>Tu lista está despejada. ¡Buen trabajo!</p>
+        </div>
+
+      </section>
+
+      <p class="page-note">Lo importante es avanzar, no hacerlo todo de una vez. <span aria-hidden="true">✦</span></p>
+    </main>
+  </body>
+</html>
