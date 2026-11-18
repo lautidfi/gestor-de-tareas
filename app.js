@@ -7,6 +7,9 @@ let nextTaskId = 3;
 
 const taskList = document.querySelector("#task-list");
 const taskCount = document.querySelector("#task-count");
+const progressBar = document.querySelector("#progress-bar");
+const progressFill = document.querySelector("#progress-fill");
+const progressLabel = document.querySelector("#progress-label");
 const emptyState = document.querySelector("#empty-state");
 const taskInput = document.querySelector("#task-input");
 
@@ -52,10 +55,16 @@ function renderTasks() {
     taskList.append(item);
   }
 
-  const remainingTasks = tasks.filter((task) => !task.completed).length;
+  const completedTasks = tasks.filter((task) => task.completed).length;
+  const totalTasks = tasks.length;
+  const progress = totalTasks === 0 ? 0 : Math.round((completedTasks / totalTasks) * 100);
+  const remainingTasks = totalTasks - completedTasks;
 
   taskCount.textContent = `${remainingTasks} ${remainingTasks === 1 ? "pendiente" : "pendientes"}`;
-  emptyState.hidden = tasks.length !== 0;
+  progressLabel.textContent = `${completedTasks} de ${totalTasks} completadas`;
+  progressFill.style.width = `${progress}%`;
+  progressBar.setAttribute("aria-valuenow", String(progress));
+  emptyState.hidden = totalTasks !== 0;
 }
 
 document.querySelector("#add-form").addEventListener("submit", (event) => {
